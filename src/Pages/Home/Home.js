@@ -1,9 +1,12 @@
 import React ,{useEffect , useState} from 'react'
 import axios from 'axios'
-import {Container,Row,Col,Card,Button} from 'react-bootstrap'
+
+import {Container,Row,Col,Card} from 'react-bootstrap'
+import { Link } from 'react-router-dom'
 
 const Home = (props) => {
    const [products,setProducts] = useState(null)
+
 
    const getProducts = async () =>{
     const products = await axios.get('/products.json')
@@ -22,11 +25,11 @@ const Home = (props) => {
    let list = null
 
    if(products !== null){
-       list = products.map(item => {
+       list = products.map((item,index) => {
            return (
-               <Col className='mb-3' md={4} sm={6} lg={3}>
+               <Col key={index} className='mb-3' md={4} sm={6} lg={3}>
                     <Card className='text-center'>
-                        <Card.Link href='#'><Card.Img variant='top' src={`${item.image}`} /></Card.Link>
+                        <Link to={`/product:#${item._id}`}><Card.Img variant='top' src={`${item.image}`} /></Link>
                         <Card.Body>
                             <Card.Title>{item.name}</Card.Title>
                             <Card.Text>{item.description}</Card.Text>

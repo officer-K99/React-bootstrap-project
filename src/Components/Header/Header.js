@@ -1,5 +1,7 @@
 import React from 'react'
+
 import {Navbar,Container,Nav,} from 'react-bootstrap'
+import { Link } from 'react-router-dom'
 
 const Header = () => {
   return (
@@ -7,10 +9,10 @@ const Header = () => {
     <header>
     <Navbar bg="primary" variant="dark">
     <Container>
-    <Navbar.Brand href="#home">FC Market</Navbar.Brand>
+    <Link to='/'><Navbar.Brand style={{display : 'inline'}} as='p' >FC Market</Navbar.Brand></Link>
     <Nav className="me-auto">
-      <Nav.Link href="#home"><i className="fa fa-shopping-cart"></i></Nav.Link>
-      <Nav.Link href="#features"><i className='fa fa-user'></i></Nav.Link>
+     <Link to='/cart'><Nav.Link style={{display : 'inline'}} as='p' ><i className="fa fa-shopping-cart"></i></Nav.Link></Link> 
+     <Link to='/account'><Nav.Link style={{display : 'inline'}} as='p' ><i className='fa fa-user'></i></Nav.Link></Link> 
     </Nav>
     </Container>
     </Navbar>
