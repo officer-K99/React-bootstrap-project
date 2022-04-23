@@ -1,0 +1,48 @@
+{
+  "items" : [
+    {
+      "_id": "1",
+      "name": "Airpods",
+      "image": "/images/airpods.jpg",
+      "description": "توضیحات محصول",
+      "price": 99
+    },
+    {
+      "_id": "2",
+      "name": "Apple Watch",
+      "image": "/images/apple-watch.jpg",
+      "description": "توضیحات محصول",
+      "price": 67
+    },
+    {
+      "_id": "3",
+      "name": "Iphone 12",
+      "image": "/images/iphone-12.jpg",
+      "description": "توضیحات محصول",
+      "price": 56
+    },
+    {
+      "_id": "4",
+      "name": "Iphone SE",
+      "image": "/images/iphone-se.jpg",
+      "description": "توضیحات محصول",
+      "price": 80
+    },
+    {
+      "_id": "5",
+      "name": "Macbook",
+      "image": "/images/macbook.jpg",
+      "description": "توضیحات محصول",
+      "price": 70
+    },
+    {
+      "_id": "6",
+      "name": "Mouse",
+      "image": "/images/mouse.jpg",
+      "description": "توضیحات محصول",
+      "price": 50
+    }
+  ]
+}
+
+
