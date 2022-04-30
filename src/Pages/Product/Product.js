@@ -1,53 +1,63 @@
-import React , {useState,useEffect} from 'react'
-import axios from 'axios'
+import React , {useEffect} from 'react'
+import {useParams} from 'react-router-dom'
+import {useDispatch,useSelector} from 'react-redux'
+import { ProductListAction } from '../../Store/Redusers/Products/productsAction'
 
-import {Container,Row,Col,Card,Button} from 'react-bootstrap'
+import {Container,Row,Col,Card} from 'react-bootstrap'
 
-const Product = (props) => {
-  const [product , setProduct] = useState(null)
-  console.log(props)
-  const findProductHandler = async () => {
-    const id = window.location.hash.split('#')[1]
 
-    const products = await axios.get('./products.json')
-    
-    const product = products.data.items.find(item => item._id === id)
-    
-    return product
-  }
+const Product = () => {
+  const dispatch = useDispatch()
+  const productList = useSelector( state => state.productList )
 
- 
-  useEffect( ()=> {
-    findProductHandler().then(res => setProduct(res) )
-  },[])
+  const {loading , products} = productList
 
-  let findproduct = null
+  
 
-  if(product !== null){
+  let {id} = useParams()
+
+  id = id[1]
+
+  useEffect(()=> {
+
+    dispatch(ProductListAction())
+
+  },[dispatch])
+
+
+
+  let findproduct = products === [] ? null : products.find(item => item._id === id)
+  
+
+  if(findproduct !== undefined){
     findproduct = (
       <Card >
       <Row className='align-items-center text-center'>
         <Col md={8}>
-          <Card.Img src={`${product.image}`} />
+          <Card.Img src={`${findproduct.image}`} />
         </Col>
         <Col md={4}>
           <Card.Body>
             <Card.Title>
-              {product.name}
+              {findproduct.name}
             </Card.Title>
             <Card.Text>
-              {product.description}
+              {findproduct.description}
             </Card.Text>
           </Card.Body>
         </Col>
       </Row>
     </Card>
     )
+  }else{
+    findproduct = <h2>...در حال دریافت محصول</h2>
   }
+
+
   
   return (
     <Container as='main'>
-        <Row>
+        <Row className='text-center'>
           {findproduct}
         </Row>
     </Container>
